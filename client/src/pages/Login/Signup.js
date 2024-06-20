@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import twitterImage from '../../assets/images/twitter.jpeg'
 import { FaTwitter } from "react-icons/fa";
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
+import GoogleButton from 'react-google-button'
+import { Link, useNavigate } from 'react-router-dom';
+import './Login.css';
+
 
 const Signup = () => {
     const [email, setEmail] = useState('')
@@ -18,8 +22,24 @@ const Signup = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
-    console.log(error)
-    console.log(user)
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+
+    const navigate = useNavigate();
+
+    if(user || googleUser) {
+        navigate('/')
+        console.log(user)
+        console.log(googleUser)
+    }
+
+    if(error) {
+        console.log(error.message)
+    }
+
+    if(loading) {
+        console.log('loading ...')
+    }  
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,27 +47,43 @@ const Signup = () => {
         createUserWithEmailAndPassword(email, password)
     }
 
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle();
+    }
+
   return (
-    <div className='signup-container'>
+    <div className='login-container'>
         <div className='image-container'>
-            <img src={twitterImage} alt=""/>
+            <img className="image" src={twitterImage} alt=""/>
         </div>
         <div className='form-container'>
-            <FaTwitter />
-            <h2>Happening Now</h2>
-            <form onSubmit={handleSubmit}>
-                <input type="text" className="display-name" placeholder='Username' onChange={(e) => setUsername(e.target.value)}/>
-                
-                <input type="text" className="display-name" placeholder='Enter Full Name' onChange={(e) => setName(e.target.value)}/>
-                
-                <input type="email" className="email" placeholder='Email Address' onChange={(e) => setEmail(e.target.value)}/>
-                
-                <input type="password" className="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
-                
-                <div className='btn-login'>
-                    <button type='submit' className='btn'>Sign Up</button>
+            <div className='form-box'>
+                <FaTwitter className='Twittericon' style={{ color: 'skyblue' }}/>
+                <h2 className='heading'>Happening Now</h2>
+                <h3 className='heading1'>Join Twitter Today</h3>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" className="display-name" placeholder='Username' onChange={(e) => setUsername(e.target.value)}/>
+                    
+                    <input type="text" className="display-name" placeholder='Enter Full Name' onChange={(e) => setName(e.target.value)}/>
+                    
+                    <input type="email" className="email" placeholder='Email Address' onChange={(e) => setEmail(e.target.value)}/>
+                    
+                    <input type="password" className="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
+                    
+                    <div className='btn-login'>
+                        <button type='submit' className='btn'>Sign Up</button>
+                    </div>
+                </form>
+                <hr />
+                <div className='google-button'>
+                    <GoogleButton classroom='g-btn' type="light" onClick={handleGoogleSignIn}/>
                 </div>
-            </form>
+                <div>
+                    Already have an account?
+                    <Link to='/login' style={{ textDecoration:'none', color: 'skyblue', fontWeight: '600', marginLeft: '5px' }} > Login </Link>
+                </div>
+            </div>
         </div>
     </div>
   )
