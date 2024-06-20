@@ -1,41 +1,34 @@
 import React, { useState } from 'react'
 import twitterImage from '../../assets/images/twitter.jpeg'
 import { FaTwitter } from "react-icons/fa";
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
 
-const Login = () => {
+const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('')
+    const [name, setName] = useState('')
     // const [errorMessage, setError] = useState('')
 
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useSignInWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth);
 
-    if(user) {
-        console.log(user)
-    }
-
-    if(error) {
-        console.log(error.message)
-    }
-
-    if(loading) {
-        console.log('loading ...')
-    }    
+    console.log(error)
+    console.log(user)
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(email, password)
-        signInWithEmailAndPassword(email, password)
+        createUserWithEmailAndPassword(email, password)
     }
 
   return (
-    <div className='login-container'>
+    <div className='signup-container'>
         <div className='image-container'>
             <img src={twitterImage} alt=""/>
         </div>
@@ -43,10 +36,16 @@ const Login = () => {
             <FaTwitter />
             <h2>Happening Now</h2>
             <form onSubmit={handleSubmit}>
+                <input type="text" className="display-name" placeholder='Username' onChange={(e) => setUsername(e.target.value)}/>
+                
+                <input type="text" className="display-name" placeholder='Enter Full Name' onChange={(e) => setName(e.target.value)}/>
+                
                 <input type="email" className="email" placeholder='Email Address' onChange={(e) => setEmail(e.target.value)}/>
+                
                 <input type="password" className="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
+                
                 <div className='btn-login'>
-                    <button type='submit' className='btn'>Login</button>
+                    <button type='submit' className='btn'>Sign Up</button>
                 </div>
             </form>
         </div>
@@ -54,4 +53,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Signup
