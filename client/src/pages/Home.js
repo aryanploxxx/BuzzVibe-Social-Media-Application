@@ -7,9 +7,17 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../firebase.init'
 import { useSignOut } from 'react-firebase-hooks/auth';
 import { Outlet } from 'react-router-dom'
+import useLoggedInUser from '../Hooks/useLoggedInUser'
 
 const Home = () => {
   const user = useAuthState(auth);
+  // We get the entire logged in user details including email from this
+  // Now we will extract email and use to it fetch all remaining details of the user from it
+  // console.log(user?.email);
+
+  const [loggedInUser] = useLoggedInUser();
+  // console.log(loggedInUser)
+
   const [signOut, loading, error] = useSignOut(auth);
 
   const handleLogout = () => {

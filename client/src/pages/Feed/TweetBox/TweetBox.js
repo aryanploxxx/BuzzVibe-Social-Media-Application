@@ -4,20 +4,22 @@ import { Avatar, Button } from "@mui/material";
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 import axios from "axios";
 // import { useUserAuth } from "../../../context/UserAuthContext";
-// import useLoggedInUser from "../../../hooks/useLoggedInUser";
+import useLoggedInUser from "../../../Hooks/useLoggedInUser";
+import { useAuthState } from 'react-firebase-hooks/auth'
+import auth from '../../../firebase.init'
 
 function TweetBox() {
     const [post, setPost] = useState('')
     const [imageURL, setImageURL] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    // const [name, setName] = useState('');
-    // const [username, setUsername] = useState(' ');
-    // const [loggedInUser] = useLoggedInUser();
-    // const { user } = useUserAuth();
-    // const email = user?.email;
+    const [name, setName] = useState('');
+    const [username, setUsername] = useState(' ');
+    const [loggedInUser] = useLoggedInUser();
+    const [ user ] = useAuthState(auth);
+    const email = user?.email;
 
 
-    // const userProfilePic = loggedInUser[0]?.profileImage ? loggedInUser[0]?.profileImage : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+    const userProfilePic = loggedInUser[0]?.profileImage ? loggedInUser[0]?.profileImage : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
 
     // console.log(user?.providerData[0]?.providerId);
 
@@ -26,7 +28,7 @@ function TweetBox() {
         const image = e.target.files[0];
 
         const formData = new FormData();
-        formData.set('image', image)
+        formData.set('image', image);
 
         axios.post("https://api.imgbb.com/1/upload?key=00a4bb2e713dc89ddd0ba7bc1839bf66", formData)
             .then(res => {
@@ -42,14 +44,27 @@ function TweetBox() {
 
     const handleTweet = (e) => {
         e.preventDefault();
+        console.log(user)
+        if(user.providerData[0]?.providerId === 'password') {
+            fetch(`http://localhost:5000/loggedInUser?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data)
+                setName(data[0]?.name);
+                setUsername(data[0]?.username);
+            })
+        } else {
+            setName(user?.displayName)
+            setUsername(email?.split('@')[0])
+        }
         if(imageURL) {
             const userPost = {
-                // profilePhoto: userProfilePic,
+                profilePhoto: userProfilePic,
                 post: post,
                 photo: imageURL,
-                // username: username,
-                // name: name,
-                // email: email,
+                username: username,
+                name: name,
+                email: email,
             }
             console.log(userPost);
             // setPost('')

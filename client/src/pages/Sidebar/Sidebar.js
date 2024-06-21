@@ -16,11 +16,16 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import CustomLink from './CustomLink'
+import useLoggedInUser from "../../Hooks/useLoggedInUser";
 
 
 const Sidebar = ({handleLogout, user}) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const openMenu = Boolean(anchorEl);  
+    const [loggedInUser] = useLoggedInUser();
+
+    const userProfilePic = loggedInUser[0]?.profileImage ? loggedInUser[0]?.profileImage : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+
     const handleClick = (e) => {
         setAnchorEl(e.currentTarget);
     }
@@ -28,6 +33,8 @@ const Sidebar = ({handleLogout, user}) => {
     const handleClose = () => {
         setAnchorEl(null);
     }
+
+    const result =  user[0]?.email?.split('@')[0];
 
   return (
     <div className='sidebar'>
@@ -62,10 +69,14 @@ const Sidebar = ({handleLogout, user}) => {
         </Button>
 
         <div className="Profile_info">
-            <Avatar src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'></Avatar>
+            <Avatar src={userProfilePic}></Avatar>
             <div className='user_info'>
-                <h4>Aryan Gupta</h4>
-                <h5>@aryan</h5>
+                <h4>
+                    {
+                        loggedInUser[0]?.name ? loggedInUser[0]?.name : user && user[0]?.displayName
+                    }
+                </h4>
+                <h5>@{result}</h5>
             </div>
             <IconButton size ='small' sx ={{ ml: 2}} aria-controls={openMenu ? "basic-menu" : undefined} aria-haspopup="true" aria-expanded={openMenu ? "true" : undefined} onClick={handleClick}>
                 <FaEllipsisH />
@@ -74,10 +85,12 @@ const Sidebar = ({handleLogout, user}) => {
                 <MenuItem className='Profile_info1'>
                     <Avatar src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'></Avatar>
                     <div className='user_info subuser_info'>
-                        <div>
-                            <h4>Aryan Gupta</h4>
-                            <h5>@aryan</h5>
-                        </div>
+                        <h4>
+                            {
+                                loggedInUser[0]?.name ? loggedInUser[0]?.name : user && user[0]?.displayName
+                            }
+                        </h4>
+                        <h5>@{result}</h5>
                         <MdOutlineDone className='done_icon'></MdOutlineDone>
                     </div>
                 </MenuItem>
