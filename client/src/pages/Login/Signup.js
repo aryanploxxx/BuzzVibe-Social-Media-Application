@@ -7,6 +7,7 @@ import auth from '../../firebase.init'
 import GoogleButton from 'react-google-button'
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
+import axios from "axios";
 
 
 const Signup = () => {
@@ -46,6 +47,15 @@ const Signup = () => {
         e.preventDefault();
         console.log(email, password)
         createUserWithEmailAndPassword(email, password)
+
+        const user = {
+            username: username,
+            name: name,
+            email: email,
+        }
+
+        axios.post("http://localhost:5000/register", user);
+        // the same code which we would have to do in multiple lines by defined headers, body etc is done by axios in one line
     }
 
 
