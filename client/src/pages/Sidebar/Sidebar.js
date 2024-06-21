@@ -11,12 +11,12 @@ import { MdPermIdentity } from "react-icons/md";
 import { FaEllipsisH } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import { MdOutlineDone } from "react-icons/md";
-
 import { Button, Avatar, IconButton } from '@mui/material'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
-
+import { Link } from 'react-router-dom'
+import CustomLink from './CustomLink'
 
 
 const Sidebar = ({handleLogout, user}) => {
@@ -33,14 +33,30 @@ const Sidebar = ({handleLogout, user}) => {
   return (
     <div className='sidebar'>
         <FaTwitter className='sidebar_twitterIcon' />
-        <SidebarOptions active Icon={IoMdHome} text='Home' />
-        <SidebarOptions active Icon={FaSearch} text='Explore' />
-        <SidebarOptions active Icon={IoIosNotifications} text='Notifications' />
-        <SidebarOptions active Icon={MdOutlineMail} text='Messages' />
-        <SidebarOptions active Icon={FaBookmark} text='Bookmarks' />
-        <SidebarOptions active Icon={FaRegListAlt} text='Lists' />
-        <SidebarOptions active Icon={MdPermIdentity} text='Profile' />
-        <SidebarOptions active Icon={FaEllipsisH} text='More' />
+        <CustomLink to='/home/feed'>
+            <SidebarOptions active Icon={IoMdHome} text='Home' />
+        </CustomLink>
+        <CustomLink to='/home/explore'>
+            <SidebarOptions active Icon={FaSearch} text='Explore' />
+        </CustomLink>
+        <CustomLink to='/home/notifications'>
+            <SidebarOptions active Icon={IoIosNotifications} text='Notifications' />
+        </CustomLink>
+        <CustomLink to='/home/messages'>
+            <SidebarOptions active Icon={MdOutlineMail} text='Messages' />
+        </CustomLink>
+        <CustomLink to='/home/bookmarks'>
+            <SidebarOptions active Icon={FaBookmark} text='Bookmarks' />
+        </CustomLink>
+        <CustomLink to='/home/lists'>
+            <SidebarOptions active Icon={FaRegListAlt} text='Lists' />
+        </CustomLink>
+        <CustomLink to='/home/profile'>
+            <SidebarOptions active Icon={MdPermIdentity} text='Profile' />
+        </CustomLink>
+        <CustomLink to='/home/more'>
+            <SidebarOptions active Icon={FaEllipsisH} text='More' />
+        </CustomLink>
         
         <Button variant='outlined' className='sidebar_tweet'>
             Tweet

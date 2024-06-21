@@ -1,12 +1,12 @@
 import React from 'react'
 import '../Page.css'
 
-const Feed = () => {
+const Explore = () => {
   return (
     <div className='page'>
-        <h2 className='pageTitle'>Welcome to Feed</h2>
+        <h2 className='pageTitle'>Welcome to Explore</h2>
     </div>
   )
 }
 
-export default Feed
+export default Explore

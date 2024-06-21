@@ -6,6 +6,7 @@ import Widgets from './Widgets/Widgets'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../firebase.init'
 import { useSignOut } from 'react-firebase-hooks/auth';
+import { Outlet } from 'react-router-dom'
 
 const Home = () => {
   const user = useAuthState(auth);
@@ -18,7 +19,7 @@ const Home = () => {
   return (
     <div className='app'>
       <Sidebar handleLogout={handleLogout} user={user}/>
-      <Feed/>
+      <Outlet/>
       <Widgets/>
     </div>
   )
