@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import './MainPage.css';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -10,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 // import EditProfile from '../EditProfile/EditProfile';
 import axios from "axios";
 import useLoggedInUser from '../../../Hooks/useLoggedInUser';
+import EditProfile from '../EditProfile/EditProfile';
 
 
 const MainPage = ({ user }) => {
@@ -168,7 +170,7 @@ const MainPage = ({ user }) => {
                     </h3>
                     <p className='usernameSection'>@{username}</p>
                   </div>
-                  {/* <EditProfile user={user} loggedInUser={loggedInUser} /> */}
+                  <EditProfile user={user} loggedInUser={loggedInUser} />
                 </div>
                 <div className='infoContainer'>
                   {loggedInUser[0]?.bio ? <p>{loggedInUser[0].bio}</p> : ''}
