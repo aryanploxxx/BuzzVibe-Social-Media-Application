@@ -30,8 +30,8 @@ const Signup = () => {
 
     if(user || googleUser) {
         navigate('/')
-        console.log(user)
-        console.log(googleUser)
+        // console.log(user)
+        // console.log(googleUser)
     }
 
     if(error) {
@@ -39,13 +39,13 @@ const Signup = () => {
     }
 
     if(loading) {
-        console.log('loading ...')
+        // console.log('loading ...')
     }  
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email, password)
+        // console.log(email, password)
         createUserWithEmailAndPassword(email, password)
 
         const user = {
@@ -54,7 +54,7 @@ const Signup = () => {
             email: email,
         }
 
-        axios.post("http://localhost:5000/register", user);
+        axios.post("https://buzzvibe-social-media-backend.onrender.com/register", user);
         // the same code which we would have to do in multiple lines by defined headers, body etc is done by axios in one line
     }
 

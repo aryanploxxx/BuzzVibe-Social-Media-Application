@@ -71,8 +71,8 @@ export default function EditProfile({ user, loggedInUser }) {
       website,
       dob,
     }
-    console.log(editedInfo);
-    fetch(`http://localhost:5000/userUpdates/${user?.email}`, {
+    // console.log(editedInfo);
+    fetch(`https://buzzvibe-social-media-backend.onrender.com/userUpdates/${user?.email}`, {
       method: "PATCH",
       headers: {
         'content-type': 'application/json'
@@ -81,7 +81,7 @@ export default function EditProfile({ user, loggedInUser }) {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('done', data);
+        // console.log('done', data);
       })
   }
 

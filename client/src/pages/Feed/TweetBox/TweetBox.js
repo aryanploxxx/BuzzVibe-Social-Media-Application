@@ -18,7 +18,6 @@ function TweetBox() {
     const [ user ] = useAuthState(auth);
     const email = user?.email;
 
-
     const userProfilePic = loggedInUser[0]?.profileImage ? loggedInUser[0]?.profileImage : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
 
     // console.log(user?.providerData[0]?.providerId);
@@ -44,9 +43,9 @@ function TweetBox() {
 
     const handleTweet = (e) => {
         e.preventDefault();
-        console.log(user)
+        // console.log(user)
         if(user.providerData[0]?.providerId === 'password') {
-            fetch(`http://localhost:5000/loggedInUser?email=${email}`)
+            fetch(`https://buzzvibe-social-media-backend.onrender.com/loggedInUser?email=${email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
@@ -66,10 +65,10 @@ function TweetBox() {
                 name: name,
                 email: email,
             }
-            console.log(userPost);
+            // console.log(userPost);
             setPost('')
             setImageURL('')
-            fetch('http://localhost:5000/post', {
+            fetch('https://buzzvibe-social-media-backend.onrender.com/post', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'
@@ -78,8 +77,7 @@ function TweetBox() {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
-
+                    // console.log(data);
                 })
         }
     }

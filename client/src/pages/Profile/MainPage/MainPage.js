@@ -23,7 +23,7 @@ const MainPage = ({ user }) => {
   const username = user?.email?.split('@')[0];
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/userPost?email=${user?.email}`)
+    fetch(`https://buzzvibe-social-media-backend.onrender.com/userPost?email=${user?.email}`)
       .then(res => res.json())
       .then(data => {
         setPosts(data);
@@ -49,7 +49,7 @@ const MainPage = ({ user }) => {
         setIsLoading(false)
 
         if (url) {
-          fetch(`http://localhost:5000/userUpdates/${user?.email}`, {
+          fetch(`https://buzzvibe-social-media-backend.onrender.com/userUpdates/${user?.email}`, {
             method: "PATCH",
             headers: {
               'content-type': 'application/json'
@@ -58,7 +58,7 @@ const MainPage = ({ user }) => {
           })
             .then(res => res.json())
             .then(data => {
-              console.log('done', data);
+              // console.log('done', data);
             })
         }
 
@@ -88,7 +88,7 @@ const MainPage = ({ user }) => {
         }
         setIsLoading(false)
         if (url) {
-          fetch(`http://localhost:5000/userUpdates/${user?.email}`, {
+          fetch(`https://buzzvibe-social-media-backend.onrender.com/userUpdates/${user?.email}`, {
             method: "PATCH",
             headers: {
               'content-type': 'application/json'
@@ -97,7 +97,7 @@ const MainPage = ({ user }) => {
           })
             .then(res => res.json())
             .then(data => {
-              console.log('done', data);
+              // console.log('done', data);
             })
         }
 

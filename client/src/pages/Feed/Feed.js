@@ -8,7 +8,7 @@ import Post from './Post/Post'
 const Feed = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/post')
+    fetch('https://buzzvibe-social-media-backend.onrender.com/post')
       .then(res => res.json())
       .then(data => {
         setPosts(data)
