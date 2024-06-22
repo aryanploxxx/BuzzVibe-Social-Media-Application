@@ -23,6 +23,7 @@ async function run() {
             res.send(user);
         })
 
+        // We'll basically search the db for details of the user from the email passed by the frontend
         app.get('/loggedInUser', async (req, res) => {
             const email = req.query.email;
             const user = await userCollection.find({ email: email }).toArray();
@@ -33,7 +34,7 @@ async function run() {
             const post = (await postCollection.find().toArray()).reverse();
             res.send(post);
         })
-        
+
         app.get('/userPost', async (req, res) => {
             const email = req.query.email;
             const post = (await postCollection.find({ email: email }).toArray()).reverse();

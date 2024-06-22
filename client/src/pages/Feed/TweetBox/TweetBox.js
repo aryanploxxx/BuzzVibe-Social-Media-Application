@@ -57,7 +57,7 @@ function TweetBox() {
             setName(user?.displayName)
             setUsername(email?.split('@')[0])
         }
-        if(imageURL) {
+        if(name) {
             const userPost = {
                 profilePhoto: userProfilePic,
                 post: post,
@@ -67,8 +67,8 @@ function TweetBox() {
                 email: email,
             }
             console.log(userPost);
-            // setPost('')
-            // setImageURL('')
+            setPost('')
+            setImageURL('')
             fetch('http://localhost:5000/post', {
                 method: "POST",
                 headers: {
