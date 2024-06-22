@@ -87,7 +87,7 @@ function TweetBox() {
     return <div className="tweetBox">
         <form onSubmit={handleTweet}>
             <div className="tweetBox__input">
-                <Avatar src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" />
+                <Avatar src={userProfilePic}></Avatar>
                 <input
                     type="text"
                     placeholder="What's happening?"
