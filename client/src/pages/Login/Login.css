@@ -1,3 +1,5 @@
+@import './fonts.css';
+
 .login-container {
     display: flex;
     flex: 1;

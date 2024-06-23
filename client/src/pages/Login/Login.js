@@ -8,6 +8,7 @@ import auth from '../../firebase.init'
 import GoogleButton from 'react-google-button'
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
+import '../../fonts.css';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth'
 import logo from '../../assets/buzzvibe-logo.png'
 import login_page_image from '../../assets/images/login-page-image.jpeg'
