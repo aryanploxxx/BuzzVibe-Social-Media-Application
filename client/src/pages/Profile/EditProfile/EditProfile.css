@@ -24,6 +24,7 @@
     font-size: 20px;
     font-weight: 400;
     margin-left: 10px;
+    color: #1b1b1b;
   }
   
   .header>.save-btn {
@@ -156,6 +157,8 @@
     border: 1px solid;
     border-radius: 2rem;
     margin-right: 20px;
+    color: #1b1b1b;
+    font-weight: 700;
   }
 
   .Edit-profile-btn:hover {

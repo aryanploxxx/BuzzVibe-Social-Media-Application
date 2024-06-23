@@ -82,35 +82,36 @@ function TweetBox() {
         }
     }
 
-    return <div className="tweetBox">
-        <form onSubmit={handleTweet}>
-            <div className="tweetBox__input">
-                <Avatar src={userProfilePic}></Avatar>
-                <input
-                    type="text"
-                    placeholder="What's happening?"
-                    onChange={(e) => setPost(e.target.value)}
-                    value={post}
-                    required
-                />
+    return (
+        <div className="tweetBox rounded-bl-[20px] rounded-br-[20px] mb-5 bg-[#1b1b1b]">
+            <form onSubmit={handleTweet}>
+                <div className="tweetBox__input">
+                    <Avatar src={userProfilePic}></Avatar>
+                    <input
+                        type="text"
+                        placeholder="What's happening?"
+                        onChange={(e) => setPost(e.target.value)}
+                        value={post}
+                        required
+                        className="bg-[#1f262c] py-3 px-6 rounded-[30px]"
+                    />
 
-            </div>
-            <div className="imageIcon_tweetButton">
-                <label htmlFor='image' className="imageIcon">
-                    {
-                        isLoading ? <p>Uploading Image</p> : <p>{imageURL ? 'image uploaded' : <AddPhotoAlternateOutlinedIcon />}</p>
-                    }
-                </label>
-                <input
-                    type="file"
-                    id='image'
-                    className="imageInput"
-                    onChange={handleUploadImage}
-                />
-                <Button className="tweetBox__tweetButton" type="submit">Tweet</Button>
-            </div>
-        </form>
-
-    </div>
+                </div>
+                <div className="flex justify-between">
+                    <div className="flex flex-row gap-2 items-center text-[#d9d9d9]">
+                        <label htmlFor='image' className="imageIcon">
+                            {
+                                isLoading ? <p>Uploading Image</p> : <p>{imageURL ? 'Image Uploaded' : <>  <div className="flex flex-row gap-2 items-center text-[#d9d9d9]"><AddPhotoAlternateOutlinedIcon className="text-[16px]"/> <h3 className="text-[20px]">Image</h3> </div></>}</p>
+                            }
+                        </label>
+                        <input type="file" id='image' className="imageInput" onChange={handleUploadImage} />
+                        
+                    </div>
+                    
+                    <Button className="tweetBox__tweetButton bg-[#4285F4] border-none text-white font-[700] rounded-[50px] w-[100px] h-[40px] mr-[20px]" type="submit">Tweet</Button>
+                </div>
+            </form>
+        </div>
+    );
 }
 export default TweetBox;

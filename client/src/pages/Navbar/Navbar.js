@@ -39,7 +39,7 @@ const Navbar = ({handleLogout, user}) => {
     const result =  user[0]?.email?.split('@')[0];
     
   return (
-    <div className='min-w-[90vw] h-[10vh] mt-5 rounded-[30px] bg-[#1b1b1b] flex justify-between items-center'>
+    <div className='min-w-[80vw] h-[10vh] mt-5 mb-5 rounded-[30px] bg-[#1b1b1b] flex justify-between items-center'>
         {/* Navbar Logo */}
         <img src={logo} alt="buzzvibe-logo-navbar" className='h-[2vw] ml-10 '/>
         

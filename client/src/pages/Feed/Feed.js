@@ -18,8 +18,8 @@ const Feed = () => {
 
   return (
     <div className="feed">
-        <div className="feed_header">
-            <h2>Home</h2>
+        <div className="sticky top-0 z-100 py-[10px] px-[20px] text-[#0f0e0e] font-bold bg-[#fbd050e6]">
+            <h2 className='text-2xl'>Home</h2>
         </div>
         <TweetBox />
         {

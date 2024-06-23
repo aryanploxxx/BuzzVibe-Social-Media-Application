@@ -11,31 +11,31 @@ import PublishIcon from "@mui/icons-material/Publish";
 const Post = ({p}) => {
     const { name, username, photo, post, profilePhoto } = p
     return (
-      <div className="post">
-        <div className="post_avatar">
-          <Avatar src={profilePhoto} />
-        </div>
-        <div className="post_body">
-          <div className="post_header">
-            <div className="post_headerText">
-              <h3>{name}{" "}
-                <span className="post_headerSpecial">
-                  <VerifiedUserIcon className="post_badge" /> @{username}
-                </span>
-              </h3>
+      <div className=" flex items-start rounded-[20px] mb-5 bg-[#1b1b1b]">
+          <div className="post_avatar">
+            <Avatar src={profilePhoto} />
+          </div>
+          <div className="post_body">
+            <div className="post_header">
+              <div className="post_headerText">
+                <h3>{name}{" "}
+                  <span className="post_headerSpecial">
+                    <VerifiedUserIcon className="post_badge" /> @{username}
+                  </span>
+                </h3>
+              </div>
+              <div className="post_headerDescription">
+                <p>{post}</p>
+              </div>
             </div>
-            <div className="post_headerDescription">
-              <p>{post}</p>
+            <img src={photo} alt="" width='500' />
+            <div className="post_footer">
+              <ChatBubbleOutlineIcon className="post_footer_icon" fontSize="small" />
+              <RepeatIcon className="post_footer_icon" fontSize="small" />
+              <FavoriteBorderIcon className="post_footer_icon" fontSize="small" />
+              <PublishIcon className="post_footer_icon" fontSize="small" />
             </div>
           </div>
-          <img src={photo} alt="" width='500' />
-          <div className="post_footer">
-            <ChatBubbleOutlineIcon className="post_footer_icon" fontSize="small" />
-            <RepeatIcon className="post_footer_icon" fontSize="small" />
-            <FavoriteBorderIcon className="post_footer_icon" fontSize="small" />
-            <PublishIcon className="post_footer_icon" fontSize="small" />
-          </div>
-        </div>
       </div>
     );
 }

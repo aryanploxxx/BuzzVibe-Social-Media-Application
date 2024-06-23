@@ -1,6 +1,5 @@
 .tweetBox {
   padding-bottom: 10px;
-  border-bottom: 8px solid var(--twitter-background);
   padding-right: 10px;
 }
 
@@ -35,7 +34,7 @@
 }
 
 .tweetBox__tweetButton {
-  background-color: var(--twitter-color) !important;
+  background-color: #4285F4 !important;
   border: none !important;
   color: white !important;
   font-weight: 700 !important;
@@ -43,11 +42,13 @@
   border-radius: 50px !important;
   width: 100px;
   height: 40px !important;
+  margin-right: 20px !important;
 }
 
 .imageIcon {
-  color: var(--twitter-color);
-  padding-left: 25px;
+  padding-left: 75px;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 .imageInput {

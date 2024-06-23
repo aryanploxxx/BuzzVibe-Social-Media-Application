@@ -12,6 +12,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import useLoggedInUser from '../../../Hooks/useLoggedInUser';
 import EditProfile from '../EditProfile/EditProfile';
+import { FaLocationDot } from "react-icons/fa6";
+import { IoMdLink } from "react-icons/io";
 
 
 const MainPage = ({ user }) => {
@@ -111,8 +113,10 @@ const MainPage = ({ user }) => {
 
   return (
     <div>
-      <ArrowBackIcon className='arrow-icon' onClick={() => navigate('/')} />
-      <h4 className='heading4'>{username}</h4>
+      <div className='bg-[#1b1b1b]'>
+        <ArrowBackIcon className='arrow-icon' onClick={() => navigate('/')} />
+        <h4 className='heading4'>{username}</h4>
+      </div>
       <div className='mainprofile' >
         {/* <h1 className='heading-1' style={{ color: "white" }}>Building of profile page Tweets </h1> */}
         <div className='profile-bio'>
@@ -139,7 +143,7 @@ const MainPage = ({ user }) => {
                   </div>
                 </div>
               </div>
-              <div className='avatar-img'>
+              <div className='avatar-img bg-[#1b1b1b] mb-5 pb-5 rounded-bl-[20px] rounded-br-[20px]'>
                 <div className='avatarContainer'>
                   <img src={loggedInUser[0]?.profileImage ? loggedInUser[0]?.profileImage : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"} className="avatar" alt='' />
                   <div className='hoverAvatarImage'>
@@ -165,7 +169,7 @@ const MainPage = ({ user }) => {
                 </div>
                 <div className='userInfo'>
                   <div>
-                    <h3 className='heading-3'>
+                    <h3 className='heading3 mt-3 font-bold'>
                       {loggedInUser[0]?.name ? loggedInUser[0].name : user && user.displayName}
                     </h3>
                     <p className='usernameSection'>@{username}</p>
@@ -175,13 +179,13 @@ const MainPage = ({ user }) => {
                 <div className='infoContainer'>
                   {loggedInUser[0]?.bio ? <p>{loggedInUser[0].bio}</p> : ''}
                   <div className='locationAndLink'>
-                    {loggedInUser[0]?.location ? <p className='subInfo'><MyLocationIcon /> {loggedInUser[0].location}</p> : ''}
-                    {loggedInUser[0]?.website ? <p className='subInfo link'><AddLinkIcon /> {loggedInUser[0].website}</p> : ''}
+                    {loggedInUser[0]?.location ? <p className='subInfo'><FaLocationDot /> {loggedInUser[0].location}</p> : 'Undisclosed  '}
+                    {loggedInUser[0]?.website ? <p className='subInfo link'><IoMdLink className='mt-1'/> {loggedInUser[0].website}</p> : 'Undisclosed  '}
                   </div>
                 </div>
-                <h4 className='tweetsText'>Tweets</h4>
-                <hr />
               </div>
+              <h4 className='tweetsText mb-5 text-xl'>My Tweets</h4>
+
               {
                 posts.map(p => <Post p={p} />)
               }
