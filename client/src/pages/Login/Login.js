@@ -56,6 +56,7 @@ const Login = () => {
 
   return (
     <div className='h-screen w-screen bg-[#0f0e0e] flex flex-col'>
+        {/* HEADER */}
         <div className='h-[15vh] w-screen flex justify-between items-center mb-5'>
             <div className='ml-[9vw]'>
                 <img src={logo} alt="buzzvibe-logo" className='w-[10vw]'/>
@@ -66,7 +67,9 @@ const Login = () => {
             </div>
         </div>
 
-        <div className='h-[85vh] w-screen flex justify-around items-start mt-10'>
+        {/* BODY */}
+        <div className='h-[85vh] w-screen flex justify-around items-start mt-5'>
+            {/* LEF PART */}
             <div className='ml-[5vw] w-[45%] flex flex-col gap-5'>
                 <div className='text-[#D9D9D9] max-h-48 rounded-[30px] text-right overflow-hidden relative '>
                     {/* <img src={logo} alt="" className='ml-[-90px] absolute'/> */}
@@ -81,13 +84,14 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            {/* RIGHT SIDE */}
             <div className='mr-[5vw] w-[32%]'>
                 <div className='flex flex-col p-[50px] item-center bg-[#1b1b1b] rounded-[30px]'>
                     <div className="justify-start items-inherit row-auto ">
                         <h2 className='text-[#D9D9D9] text-[24px]' style={{fontFamily: "Gilroy"}}>what's cooking inside?</h2>
                         <form onSubmit={handleSubmit} className='flex flex-col justify-between gap-5'>
-                            <input type="email" className="w-full p-3 rounded-[5px] bg-[#D9D9D9] placeholder:text-gray-500" placeholder='Email Address' onChange={(e) => setEmail(e.target.value)}/>
-                            <input type="password" className="w-full mt-0 p-3 rounded-[5px] bg-[#D9D9D9] placeholder:text-gray-500" placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
+                            <input required type="email" className="w-full p-3 rounded-[5px] bg-[#D9D9D9] placeholder:text-gray-500" placeholder='Email Address' onChange={(e) => setEmail(e.target.value)}/>
+                            <input required type="password" className="w-full mt-0 p-3 rounded-[5px] bg-[#D9D9D9] placeholder:text-gray-500" placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
                             <button type='submit' className="w-full p-3 mb-[15px] rounded-[5px] bg-[#e6b92d]">Login</button>
                         </form>
                     </div>
