@@ -8,6 +8,7 @@ import auth from '../firebase.init'
 import { useSignOut } from 'react-firebase-hooks/auth';
 import { Outlet } from 'react-router-dom'
 import useLoggedInUser from '../Hooks/useLoggedInUser'
+import '../fonts.css'
 
 const Home = () => {
   const user = useAuthState(auth);

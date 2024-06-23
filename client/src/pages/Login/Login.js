@@ -56,7 +56,7 @@ const Login = () => {
 
   return (
     <div className='h-screen w-screen bg-[#0f0e0e] flex flex-col'>
-        <div className='h-[15vh] w-screen flex justify-between items-center'>
+        <div className='h-[15vh] w-screen flex justify-between items-center mb-5'>
             <div className='ml-[9vw]'>
                 <img src={logo} alt="buzzvibe-logo" className='w-[10vw]'/>
             </div>
@@ -66,14 +66,14 @@ const Login = () => {
             </div>
         </div>
 
-        <div className='h-[85vh] w-screen flex justify-around items-start'>
+        <div className='h-[85vh] w-screen flex justify-around items-start mt-10'>
             <div className='ml-[5vw] w-[45%] flex flex-col gap-5'>
                 <div className='text-[#D9D9D9] max-h-48 rounded-[30px] text-right overflow-hidden relative '>
                     {/* <img src={logo} alt="" className='ml-[-90px] absolute'/> */}
                     <svg className='mt-[-500px] ml-[-1600px] absolute z-0' viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                         <path fill="#E6B92D" d="M49.6,-58.7C60.8,-49.7,64,-30.8,65.2,-13.1C66.5,4.6,65.8,21.1,60.3,38.7C54.7,56.3,44.4,74.9,30,78.5C15.6,82,-2.9,70.5,-21,62C-39,53.5,-56.6,48.2,-68.2,35.7C-79.9,23.2,-85.6,3.5,-83.5,-15.8C-81.4,-35.2,-71.4,-54.2,-56.2,-62.5C-41,-70.8,-20.5,-68.3,-0.6,-67.6C19.2,-66.8,38.4,-67.7,49.6,-58.7Z" transform="translate(100 100)" />
                     </svg>
-                    <h1 className='leading-tight p-2 font-medium z-10' style={{fontFamily: "gilroy"}}>going viral, <br/> one post at a time.</h1>
+                    <h1 className='leading-tight p-2 font-medium z-10' style={{fontFamily: "Gilroy"}}>going viral, <br/> one post at a time.</h1>
                 </div>
                 <div className=' w-full overflow-hidden bg-[#1b1b1b] rounded-[40px]'>
                     <div className='h-1/3 overflow-hidden max-h-[24rem] min-w-64'>
